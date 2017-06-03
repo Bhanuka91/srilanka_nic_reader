@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText nic;
     Button decode;
-    TextView de_nic, de_gender, de_birth, de_age;
+    TextView de_nic, de_gender, de_birth, de_age,de_born;
 
 
     @Override
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             de_gender = (TextView) findViewById(R.id.de_gender);
             de_birth = (TextView) findViewById(R.id.de_birth);
             de_age = (TextView) findViewById(R.id.de_age);
+            de_born = (TextView) findViewById(R.id.de_born);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     de_gender.setText("");
                     de_birth.setText("");
                     de_age.setText("");
+                    de_born.setText("");
 
                     //CLearing Model Class
                     NIC modelClass = new NIC(nic.getText().toString());
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     de_gender.setText(modelClass.getGender());
                     de_birth.setText(modelClass.getBirthDay());
                     de_age.setText(modelClass.getAge());
+                    de_born.setText(modelClass.getBornDay());
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
