@@ -1,8 +1,12 @@
 package com.example.bhanuka.nicreader;
 
 import org.joda.time.LocalDate;
+import org.joda.time.MonthDay;
+import org.joda.time.Period;
+import org.joda.time.YearMonthDay;
 import org.joda.time.Years;
 
+import java.security.PrivateKey;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,6 +27,7 @@ public class NIC {
     private String gender = null;
     private String birthDay = null;
     private String Age = null;
+    private String bornDay = null;
 
 
     public NIC(String nicNumber) {
@@ -109,10 +114,13 @@ public class NIC {
     public String getAge() {
         //
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat born = new SimpleDateFormat("EEEE");
+
         Date date = null;
         Years age = null;
         try {
             date = format.parse(getBirthDay());
+            bornDay = born.format(date);
             LocalDate birthdate = new LocalDate(date.getYear(), date.getMonth(), date.getDay());
             LocalDate now = new LocalDate();
             age = Years.yearsBetween(birthdate, now);
@@ -154,5 +162,9 @@ public class NIC {
         } catch (Exception e) {
         }
 
+    }
+
+    public String getBornDay() {
+        return bornDay;
     }
 }
