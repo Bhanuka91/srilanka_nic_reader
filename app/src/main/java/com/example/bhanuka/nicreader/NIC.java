@@ -52,48 +52,15 @@ public class NIC {
         int date;
 
         date = text;
+        int[] monthDays = new int[]{31,29,31,30,31,30,31,31,30,31,30,31};
 
-        for (int x = 1;
-             x < 13; x++) {
-
-            if (x < 8) {
-
-                if (x % 2 > 0 && (date - 31) > 0) {
-                    date = date - 31;
-                    counter++;
-
-                } else if (x == 2 && (date - 29) > 0) {
-                    date = date - 29;
-                    counter++;
-
-                } else {
-                    if ((date - 30) > 0) {
-                        date = date - 30;
-                        counter++;
-                    }
-                }
-
+        for (int monthDay : monthDays) {
+            if((date-monthDay)>=1){
+                counter++;
+                date-=monthDay;
             }
-            if (x > 7) {
-
-                if (x % 2 > 0 && (date - 31) > 0) {
-                    date = date - 31;
-                    counter++;
-
-                } else if (x == 2 && (date - 29) > 0) {
-                    date = date - 29;
-                    counter++;
-
-                } else {
-                    if ((date - 30) > 0) {
-                        date = date - 30;
-                        counter++;
-                    }
-                }
-
-            }
-
         }
+
         DecimalFormat format = new DecimalFormat("00");
         return format.format(counter) + "-" + format.format(date);
     }
